@@ -11,8 +11,8 @@ public class Main {
             myArray[i] = rd.nextInt(20000);
         }
             printArray(myArray);
-            bubbleSort(myArray);
-            printArray(myArray);
+            //bubbleSort(myArray);
+            //printArray(myArray);
             countSort(myArray);
             printArray(myArray);
         }
