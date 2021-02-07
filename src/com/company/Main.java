@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Main
 {
+    static int quickSortLoopCount = 0;
+
     public static void main(String[] args)
     {
         int[] myArray = generateArray();
@@ -32,7 +34,8 @@ public class Main
             long startTime = System.currentTimeMillis();
             quickSort(tempArray, 0, tempArray.length - 1);
             long endTime = System.currentTimeMillis();
-            //System.out.println("QuickSort executed " + count + " loops while sorting array of 20'000 numbers.");
+            System.out.println("QuickSort executed " + quickSortLoopCount +
+                                " loops while sorting array of 20'000 numbers.");
             System.out.println("QUICK SORT sorted this array in " + (endTime - startTime) + " miliseconds.");
         }
     }
@@ -112,11 +115,11 @@ public class Main
 
     static int partition(int[] myArray, int begin, int end)
     {
-        //int countPartition = 0;
 
         int counter = begin;
         for (int i = begin; i < end; i++)
         {
+            quickSortLoopCount++;
             if (myArray[i] < myArray[end])
             {
                 int temp = myArray[counter];
@@ -124,7 +127,6 @@ public class Main
                 myArray[i] = temp;
                 counter++;
             }
-            //countPartition++;
         }
 
         int temp = myArray[end];
@@ -136,11 +138,9 @@ public class Main
 
     public static void quickSort(int[] tempArray, int begin, int end)
     {
-        //long count = 0;
         if (end <= begin) return;
         int pivot = partition(tempArray, begin, end);
         quickSort(tempArray, begin, pivot - 1);
         quickSort(tempArray, pivot + 1, end);
-        //return count++;
     }
 }
