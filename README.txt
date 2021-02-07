@@ -1,7 +1,6 @@
 Group Assignment
 Sorting Algorithms
 
-Sounting Sort
+Counting Sort
 
-Antra, Margarita, Santa Team :)
-
+Antra, Margarita, Santa
