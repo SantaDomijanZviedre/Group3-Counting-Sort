@@ -47,7 +47,6 @@ public class Main
         System.out.println("QUICK SORT sorted this array in " + (endTime - startTime) + " miliseconds.");
     }
 
-
     public static int[] generateArray()
     {
         Random rd = new Random();
@@ -62,7 +61,6 @@ public class Main
     static long countingSort(int[] myArray)
     {
         int counter = 0;
-
         int max = Arrays.stream(myArray).max().getAsInt();
         int min = Arrays.stream(myArray).min().getAsInt();
         int range = max - min + 1;
@@ -79,8 +77,6 @@ public class Main
             count[i] += count[i - 1];
             counter++;
         }
-        //return counter;
-
         for (int i = myArray.length - 1; i >= 0; i--)
         {
             output[count[myArray[i] - min] - 1] = myArray[i];
@@ -94,7 +90,6 @@ public class Main
         }
         return counter;
     }
-
 
     public static long bubbleSort(int[] myArray)
     {
