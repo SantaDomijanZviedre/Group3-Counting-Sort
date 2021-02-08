@@ -1,7 +1,9 @@
-Group Assignment
-Sorting Algorithms
+Group 3
+<<<<<<< HEAD
+COUNT Sort Algorithm
 
-Sounting Sort
+Antra, Margarita, Santa
 
-Antra, Margarita, Santa Team :)
+>>>>>>> santa_branch
+
 

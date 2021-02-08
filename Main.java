@@ -1,6 +1,7 @@
 
 import java.util.Random;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -10,6 +11,15 @@ public class Main {
         for (int i = 0; i < myArray.length; i++) {
             myArray[i] = rd.nextInt(20000);
         }
+        {
+            long startTime = System.currentTimeMillis();
+            long counts = bubbleSort(myArray);
+            long endTime = System.currentTimeMillis();
+            System.out.println("Array was sorted in " + (endTime - startTime) + " miliseconds.");
+
+            //System.out.println(Arrays.toString(myArray));
+            System.out.println("There were " + counts + " loops used in the sorting process.");
+        }
             printArray(myArray);
             bubbleSort(myArray);
             printArray(myArray);
@@ -17,11 +27,13 @@ public class Main {
             printArray(myArray);
         }
 
-    static void bubbleSort(int[] myArray) {
+    static long bubbleSort(int[] myArray) {
         boolean sorted = false;
+        long counter = 0;
         int temp;
         while (!sorted) {
             sorted = true;
+            counter ++;
             for (int i = 0; i < myArray.length - 1; i++) {
                 if (myArray[i] > myArray[i + 1]) {
                     temp = myArray[i];
@@ -31,6 +43,7 @@ public class Main {
                         }
                     }
                 }
+        return counter;
             }
 
     static void countSort(int[] myArray) {
