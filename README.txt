@@ -1,5 +1,8 @@
 Group 3
-COUNTING Sort Algorithm
+<<<<<<< HEAD
+COUNT Sort Algorithm
 
 Antra, Margarita, Santa
+
+>>>>>>> santa_branch
 
