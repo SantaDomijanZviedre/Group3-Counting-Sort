@@ -8,38 +8,44 @@ public class Main
 {
     static int quickSortLoopCount = 0;
 
-        public static void main(String[] args)
+    public static void main(String[] args)
     {
         int[] myArray = generateArray();
-        {
-            int[] tempArray = myArray.clone();
-            long startTime = System.currentTimeMillis();
-            long count = countingSort(tempArray);
-            long endTime = System.currentTimeMillis();
-            System.out.println("CountingSort executed " + count + " loops while sorting array of 20'000 numbers.");
-            System.out.println("COUNTING SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
-        }
-
-        {
-            int[] tempArray = myArray.clone();
-            long startTime = System.currentTimeMillis();
-            long count = bubbleSort(tempArray);
-            long endTime = System.currentTimeMillis();
-            System.out.println("BubbleSort executed " + count + " loops while sorting array of 20'000 numbers.");
-            System.out.println("BUBBLE SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
-        }
-
-        {
-            int[] tempArray = myArray.clone();
-            long startTime = System.currentTimeMillis();
-            quickSort(tempArray, 0, tempArray.length - 1);
-            long endTime = System.currentTimeMillis();
-            System.out.println("QuickSort executed " + quickSortLoopCount +
-                                " loops while sorting array of 20'000 numbers.");
-            System.out.println("QUICK SORT sorted this array in " + (endTime - startTime) + " miliseconds.");
-        }
+        calcCountingSort(myArray);
+        countBubble(myArray);
+        countQuickSort(myArray);
     }
 
+    public static void calcCountingSort(int[] myArray)
+    {
+        int[] tempArray = myArray.clone();
+        long startTime = System.currentTimeMillis();
+        long count = countingSort(tempArray);
+        long endTime = System.currentTimeMillis();
+        System.out.println("CountingSort executed " + count + " loops while sorting array of 20'000 numbers.");
+        System.out.println("COUNTING SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
+    }
+
+    public static void countBubble(int[] myArray)
+    {
+        int[] tempArray = myArray.clone();
+        long startTime = System.currentTimeMillis();
+        long count = bubbleSort(tempArray);
+        long endTime = System.currentTimeMillis();
+        System.out.println("BubbleSort executed " + count + " loops while sorting array of 20'000 numbers.");
+        System.out.println("BUBBLE SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
+    }
+
+    public static void countQuickSort(int[] myArray)
+    {
+        int[] tempArray = myArray.clone();
+        long startTime = System.currentTimeMillis();
+        quickSort(tempArray, 0, tempArray.length - 1);
+        long endTime = System.currentTimeMillis();
+        System.out.println("QuickSort executed " + quickSortLoopCount +
+                " loops while sorting array of 20'000 numbers.");
+        System.out.println("QUICK SORT sorted this array in " + (endTime - startTime) + " miliseconds.");
+    }
 
     public static int[] generateArray()
     {
