@@ -11,33 +11,40 @@ public class Main
     public static void main(String[] args)
     {
         int[] myArray = generateArray();
-        {
-            int[] tempArray = myArray.clone();
-            long startTime = System.currentTimeMillis();
-            long count = countingSort(tempArray);
-            long endTime = System.currentTimeMillis();
-            System.out.println("CountingSort executed " + count + " loops while sorting array of 20'000 numbers.");
-            System.out.println("COUNTING SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
-        }
+        calcCountingSort(myArray);
+        countBubble(myArray);
+        countQuickSort(myArray);
+    }
 
-        {
-            int[] tempArray = myArray.clone();
-            long startTime = System.currentTimeMillis();
-            long count = bubbleSort(tempArray);
-            long endTime = System.currentTimeMillis();
-            System.out.println("BubbleSort executed " + count + " loops while sorting array of 20'000 numbers.");
-            System.out.println("BUBBLE SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
-        }
+    public static void calcCountingSort(int[] myArray)
+    {
+        int[] tempArray = myArray.clone();
+        long startTime = System.currentTimeMillis();
+        long count = countingSort(tempArray);
+        long endTime = System.currentTimeMillis();
+        System.out.println("CountingSort executed " + count + " loops while sorting array of 20'000 numbers.");
+        System.out.println("COUNTING SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
+    }
 
-        {
-            int[] tempArray = myArray.clone();
-            long startTime = System.currentTimeMillis();
-            quickSort(tempArray, 0, tempArray.length - 1);
-            long endTime = System.currentTimeMillis();
-            System.out.println("QuickSort executed " + quickSortLoopCount +
-                                " loops while sorting array of 20'000 numbers.");
-            System.out.println("QUICK SORT sorted this array in " + (endTime - startTime) + " miliseconds.");
-        }
+    public static void countBubble(int[] myArray)
+    {
+        int[] tempArray = myArray.clone();
+        long startTime = System.currentTimeMillis();
+        long count = bubbleSort(tempArray);
+        long endTime = System.currentTimeMillis();
+        System.out.println("BubbleSort executed " + count + " loops while sorting array of 20'000 numbers.");
+        System.out.println("BUBBLE SORT sorted this array in " + (endTime - startTime) + " miliseconds. \n");
+    }
+
+    public static void countQuickSort(int[] myArray)
+    {
+        int[] tempArray = myArray.clone();
+        long startTime = System.currentTimeMillis();
+        quickSort(tempArray, 0, tempArray.length - 1);
+        long endTime = System.currentTimeMillis();
+        System.out.println("QuickSort executed " + quickSortLoopCount +
+                " loops while sorting array of 20'000 numbers.");
+        System.out.println("QUICK SORT sorted this array in " + (endTime - startTime) + " miliseconds.");
     }
 
 
@@ -54,11 +61,8 @@ public class Main
 
     static long countingSort(int[] myArray)
     {
-        int counter1 = 0;
-        int counter2 = 0;
-        int counter3 = 0;
-        int counter4 = 0;
-        int sumOfCounters;
+        int counter = 0;
+
         int max = Arrays.stream(myArray).max().getAsInt();
         int min = Arrays.stream(myArray).min().getAsInt();
         int range = max - min + 1;
@@ -68,26 +72,27 @@ public class Main
         for (int i = 0; i < myArray.length; i++)
         {
             count[myArray[i] - min]++;
-            counter1++;
+            counter++;
         }
         for (int i = 1; i < count.length; i++)
         {
             count[i] += count[i - 1];
-            counter2++;
+            counter++;
         }
+        //return counter;
+
         for (int i = myArray.length - 1; i >= 0; i--)
         {
             output[count[myArray[i] - min] - 1] = myArray[i];
             count[myArray[i] - min]--;
-            counter3++;
+            counter++;
         }
         for (int i = 0; i < myArray.length; i++)
         {
             myArray[i] = output[i];
-            counter4++;
+            counter++;
         }
-        sumOfCounters = counter1 + counter2 + counter3 + counter4;
-        return sumOfCounters;
+        return counter;
     }
 
 
