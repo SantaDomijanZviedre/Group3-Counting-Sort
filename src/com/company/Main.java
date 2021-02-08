@@ -8,7 +8,7 @@ public class Main
 {
     static int quickSortLoopCount = 0;
 
-    public static void main(String[] args)
+        public static void main(String[] args)
     {
         int[] myArray = generateArray();
         {
