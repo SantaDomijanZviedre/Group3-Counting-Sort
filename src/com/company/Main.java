@@ -60,11 +60,7 @@ public class Main
 
     static long countingSort(int[] myArray)
     {
-        int counter1 = 0;
-        int counter2 = 0;
-        int counter3 = 0;
-        int counter4 = 0;
-        int sumOfCounters;
+        int counter = 0;
         int max = Arrays.stream(myArray).max().getAsInt();
         int min = Arrays.stream(myArray).min().getAsInt();
         int range = max - min + 1;
@@ -74,28 +70,26 @@ public class Main
         for (int i = 0; i < myArray.length; i++)
         {
             count[myArray[i] - min]++;
-            counter1++;
+            counter++;
         }
         for (int i = 1; i < count.length; i++)
         {
             count[i] += count[i - 1];
-            counter2++;
+            counter++;
         }
         for (int i = myArray.length - 1; i >= 0; i--)
         {
             output[count[myArray[i] - min] - 1] = myArray[i];
             count[myArray[i] - min]--;
-            counter3++;
+            counter++;
         }
         for (int i = 0; i < myArray.length; i++)
         {
             myArray[i] = output[i];
-            counter4++;
+            counter++;
         }
-        sumOfCounters = counter1 + counter2 + counter3 + counter4;
-        return sumOfCounters;
+        return counter;
     }
-
 
     public static long bubbleSort(int[] myArray)
     {
